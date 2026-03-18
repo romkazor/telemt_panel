@@ -166,7 +166,7 @@ func RestartService(serviceName string) error {
 	if !isValidServiceName(serviceName) {
 		return fmt.Errorf("invalid service name: %q", serviceName)
 	}
-	cmd := exec.Command("systemctl", "restart", serviceName)
+	cmd := exec.Command("sudo", "systemctl", "restart", serviceName)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("systemctl restart failed: %s: %w", string(output), err)
